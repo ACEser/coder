@@ -19,11 +19,12 @@ assert(apiKey, "failed to get openAI API key");
 
 const openai = new OpenAI({
   apiKey: apiKey,
+  baseURL: "https://api.deepseek.com/v1",
 });
 
 export async function getCode(
   messages: ChatCompletionMessageParam[] = [],
-  model: ChatCompletionCreateParamsBase["model"]
+  model: string = "deepseek-chat"
 ): Promise<{
   code: string;
   usage?: CompletionUsage | undefined;
